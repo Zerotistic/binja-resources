@@ -201,6 +201,62 @@ const resources = [
         description: "A comprehensive case study on applying static taint analysis with Binary Ninja to uncover vulnerabilities in MySQL Cluster.",
         category: "Case Study",
         tags: ["deobfuscation", "taint analysis"]
+    },
+    {
+        title: "StealC Malware Analysis Part 1",
+        url: "https://blog.lexfo.fr/StealC_malware_analysis_part1.html",
+        description: "An in-depth look at the StealC malware, covering its initial analysis and behavior.",
+        category: "Case Study",
+        tags: ["malware analysis"]
+    },
+    {
+        title: "StealC Malware Analysis Part 2",
+        url: "https://blog.lexfo.fr/StealC_malware_analysis_part2.html",
+        description: "Continuation of the StealC malware analysis, delving into advanced behavioral insights.",
+        category: "Case Study",
+        tags: ["malware analysis"]
+    },
+    {
+        title: "StealC Malware Analysis Part 3",
+        url: "https://blog.lexfo.fr/StealC_malware_analysis_part3.html",
+        description: "The final part of the StealC malware analysis, focusing on mitigation strategies and conclusions.",
+        category: "Case Study",
+        tags: ["malware analysis"]
+    },
+    {
+        title: "Extracting VMProtect Handlers with Binary Ninja",
+        url: "https://www.lodsb.com/extracting-vmprotect-handlers-with-binary-ninja",
+        description: "A guide to extracting VMProtect handlers using Binary Ninja for efficient reverse engineering.",
+        category: "tutorials",
+        tags: ["VMProtect", "automation"]
+    },
+    {
+        title: "Bulk Populating Encrypted Import Tables in Binary Ninja",
+        url: "https://www.lodsb.com/bulk-populating-encrypted-import-tables-in-binary-ninja",
+        description: "Techniques for handling and populating encrypted import tables within Binary Ninja workflows.",
+        category: "tutorials",
+        tags: ["automation"]
+    },
+    {
+        title: "Lifting VM-Based Obfuscators in Binary Ninja",
+        url: "https://www.lodsb.com/lifting-vm-based-obfuscators-in-binary-ninja",
+        description: "Strategies for lifting and analyzing VM-based obfuscators with Binary Ninja.",
+        category: "tutorials",
+        tags: ["automation", "deobfuscation"]
+    },
+    {
+        title: "Reversing Complex Jumptables in Binary Ninja",
+        url: "https://www.lodsb.com/reversing-complex-jumptables-in-binary-ninja",
+        description: "A detailed approach to reversing complex jumptables in Binary Ninja for advanced program analysis.",
+        category: "tutorials",
+        tags: ["automation"]
+    },
+    {
+        title: "Reverse Engineering for Fun and Profit - Malware Analysis on YouTube",
+        url: "https://www.youtube.com/watch?v=F3uh8DuS0tE",
+        description: "An engaging YouTube video on reverse engineering and malware analysis techniques.",
+        category: "videos",
+        tags: ["malware"]
     }
 ];
 
