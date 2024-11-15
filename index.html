@@ -36,6 +36,7 @@
             padding: 2rem;
             text-align: center;
             border-bottom: 2px solid var(--accent);
+            position: relative;
         }
 
         header h1 {
@@ -219,12 +220,52 @@
             background-color: var(--accent);
             color: var(--bg-primary);
         }
+
+        .submit-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--tag-bg);
+            color: var(--text-secondary);
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-1px);
+        }
+
+        .submit-button i {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .submit-button {
+                position: static;
+                margin-top: 1rem;
+                display: inline-flex;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1><i class="fas fa-book"></i> Binary Ninja Resource Library</h1>
         <p>A curated collection of Binary Ninja learning materials</p>
+        <a href="https://github.com/Zerotistic/binja-resources" class="submit-button" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+            Submit a Resource
+        </a>
     </header>
 
     <main class="container">

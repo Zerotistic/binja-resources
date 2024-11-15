@@ -137,7 +137,7 @@ const resources = [
         url: "https://binary.ninja/2024/08/12/sidekick-in-action-deobfuscating-strings-in-amadey-malware.html",
         description: "An exploration of using Binary Ninja's Sidekick feature to deobfuscate strings in the Amadey malware.",
         category: "tutorials",
-        tags: ["deobfuscation", "malware analysis"]
+        tags: ["AI", "deobfuscation", "malware analysis"]
     },
     {
         title: "Winning the Grand RE Challenge: Deobfuscating with Binary Ninja",
