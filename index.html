@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Ninja Resource Library</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --accent: #ff3333;       
+            --accent-dark: #cc2929;  
+            --tag-bg: #363636;
+            --tag-active: #ff4444;   
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: sticky;
+            top: calc(2rem + 100px);
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-item {
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.3rem;
+        }
+
+        .filter-item:hover {
+            background-color: var(--tag-bg);
+        }
+
+        .filter-item.active {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .search-section {
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .stats {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .resources {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+
+        .resource-card {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .resource-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent);
+        }
+
+        .resource-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-link:hover {
+            color: var(--accent-dark);
+        }
+
+        .resource-description {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background-color: var(--tag-active);
+            color: var(--text-primary);
+        }
+
+        .tag.active {
+            background-color: var(--tag-active);
+            color: var(--text-primary);
+        }
+
+        .category-icon {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .copy-button {
+            background-color: var(--tag-bg);
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .copy-button:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-book"></i> Binary Ninja Resource Library</h1>
+        <p>A curated collection of Binary Ninja learning materials</p>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="search-section">
+                <input type="text" id="searchInput" class="search-box" placeholder="Search resources...">
+            </div>
+
+            <div class="filter-section">
+                <h2><i class="fas fa-filter"></i> Categories</h2>
+                <ul class="filter-list" id="categoryFilters">
+                    <li class="filter-item active" data-category="all">
+                        <i class="fas fa-globe"></i> All Resources
+                    </li>
+                    <li class="filter-item" data-category="Case Study">
+                        <i class="fas fa-tools"></i> Case Study
+                    </li>
+                    <li class="filter-item" data-category="tutorials">
+                        <i class="fas fa-graduation-cap"></i> Tutorials
+                    </li>
+                    <li class="filter-item" data-category="Research">
+                        <i class="fas fa-microscope"></i> Research
+                    </li>
+                    <li class="filter-item" data-category="tools">
+                        <i class="fas fa-wrench"></i> Tools
+                     </li>
+                    <li class="filter-item" data-category="videos">
+                        <i class="fas fa-video"></i> Videos
+                    </li>
+                </ul>
+            </div>
+
+            <div class="stats">
+                Showing <span id="resourceCount">0</span> resources
+            </div>
+        </aside>
+
+        <section class="resources" id="resourcesContainer">
+            <!-- Resources will be dynamically added here -->
+        </section>
+    </main>
+
+    <script type="module">
+        import resources from './data.js';
+
+        /*
+        const resources = [
+            {
+                title: "CFF Remover Tool",
+                url: "https://zerotistic.blog/posts/cff-remover/",
+                description: "A tool for removing Control Flow Flattening obfuscation in binary files.",
+                category: "tools",
+                tags: ["deobfuscation", "control-flow", "analysis"]
+            },
+
+        ];
+        */
+
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilters = document.getElementById('categoryFilters');
+        const resourcesContainer = document.getElementById('resourcesContainer');
+        const resourceCountElement = document.getElementById('resourceCount');
+
+        let activeCategory = 'all';
+        let activeSearch = '';
+
+        function createResourceCard(resource) {
+            const card = document.createElement('article');
+            card.className = 'resource-card';
+            
+            const categoryIcons = {
+                tools: 'fas fa-tools',
+                scripts: 'fas fa-code',
+                tutorials: 'fas fa-graduation-cap',
+                plugins: 'fas fa-puzzle-piece'
+            };
+
+            card.innerHTML = `
+                <h2 class="resource-title">
+                    <a href="${resource.url}" class="resource-link" target="_blank" rel="noopener noreferrer">
+                        <i class="${categoryIcons[resource.category] || 'fas fa-link'} category-icon"></i>
+                        ${resource.title}
+                    </a>
+                </h2>
+                <p class="resource-description">${resource.description}</p>
+                <div class="tags">
+                    ${resource.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
+                </div>
+            `;
+            return card;
+        }
+
+        function filterResources() {
+            const filteredResources = resources.filter(resource => {
+                const matchesCategory = activeCategory === 'all' || resource.category === activeCategory;
+                const matchesSearch = 
+                    resource.title.toLowerCase().includes(activeSearch) ||
+                    resource.description.toLowerCase().includes(activeSearch) ||
+                    resource.tags.some(tag => tag.toLowerCase().includes(activeSearch));
+                return matchesCategory && matchesSearch;
+            });
+
+            resourcesContainer.innerHTML = '';
+            if (filteredResources.length === 0) {
+                resourcesContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>No resources found matching your criteria</p>
+                    </div>
+                `;
+            } else {
+                filteredResources.forEach(resource => {
+                    resourcesContainer.appendChild(createResourceCard(resource));
+                });
+            }
+            
+            resourceCountElement.textContent = filteredResources.length;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            activeSearch = e.target.value.toLowerCase();
+            filterResources();
+        });
+
+        categoryFilters.addEventListener('click', (e) => {
+            const filterItem = e.target.closest('.filter-item');
+            if (filterItem) {
+                document.querySelectorAll('.filter-item').forEach(item => item.classList.remove('active'));
+                filterItem.classList.add('active');
+                activeCategory = filterItem.dataset.category;
+                filterResources();
+            }
+        });
+
+        function filterByTag(tag) {
+            searchInput.value = tag;
+            activeSearch = tag.toLowerCase();
+            filterResources();
+        }
+
+        // Initial render
+        filterResources();
+    </script>
+</body>
+</html>
