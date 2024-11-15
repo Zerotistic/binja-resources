@@ -235,21 +235,21 @@ const resources = [
         url: "https://www.lodsb.com/bulk-populating-encrypted-import-tables-in-binary-ninja",
         description: "Techniques for handling and populating encrypted import tables within Binary Ninja workflows.",
         category: "tutorials",
-        tags: ["automation"]
+        tags: ["scripting", "deobfuscation"]
     },
     {
         title: "Lifting VM-Based Obfuscators in Binary Ninja",
         url: "https://www.lodsb.com/lifting-vm-based-obfuscators-in-binary-ninja",
         description: "Strategies for lifting and analyzing VM-based obfuscators with Binary Ninja.",
         category: "tutorials",
-        tags: ["automation", "deobfuscation"]
+        tags: ["scripting", "deobfuscation"]
     },
     {
         title: "Reversing Complex Jumptables in Binary Ninja",
         url: "https://www.lodsb.com/reversing-complex-jumptables-in-binary-ninja",
-        description: "A detailed approach to reversing complex jumptables in Binary Ninja for advanced program analysis.",
+        description: "A detailed approach to reversing complex jumptables.",
         category: "tutorials",
-        tags: ["automation"]
+        tags: ["scripting"]
     },
     {
         title: "Auditing system calls for command injection vulnerabilities using Binary Ninja's HLIL",
