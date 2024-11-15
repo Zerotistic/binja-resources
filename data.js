@@ -252,11 +252,11 @@ const resources = [
         tags: ["automation"]
     },
     {
-        title: "Reverse Engineering for Fun and Profit - Malware Analysis on YouTube",
+        title: "Auditing system calls for command injection vulnerabilities using Binary Ninja's HLIL",
         url: "https://www.youtube.com/watch?v=F3uh8DuS0tE",
-        description: "An engaging YouTube video on reverse engineering and malware analysis techniques.",
+        description: "Video on auditing system calls to discover command injection.",
         category: "videos",
-        tags: ["malware"]
+        tags: ["program analysis", "automation", "vulnerability modeling"]
     }
 ];
 
